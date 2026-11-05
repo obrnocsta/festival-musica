@@ -1,102 +1,71 @@
+<p align="center">
+  <img src="imagens/banner.png" alt="Desafios técnicos da Generation Brasil">
+</p>
+
 # Desafios Técnicos
 
-Repositório de materiais, guias e bases de apoio para os desafios técnicos do Bootcamp da Generation Brasil.
+Repositório de materiais e atividades dos desafios técnicos do Bootcamp da Generation Brasil. Cada desafio reúne seus próprios guias, conteúdos e arquivos de apoio; esta página serve como ponto de entrada e catálogo, preparado para receber novos desafios.
 
-## Objetivo
+## Catálogo de desafios
 
-Este projeto reúne os materiais do Desafio 1 e a estrutura base para a modelagem de dados fictícios em diferentes temas, com foco em:
+| Desafio | Tema | Material | Conteúdo |
+|---|---|---|---|
+| 1 | Python, APIs e IA | [Abrir materiais do Desafio 1](.) | Preparação, conexão com Google Sheets e construção de uma base de dados fictícia |
 
-- Python
-- API do Google Sheets
-- uso responsável de IA
-- geração de dados simulados
-- organização de bases de dados em tabelas de dimensão e fato
+> Novos desafios serão adicionados a esta tabela. Para manter a navegação organizada, cada desafio deve ficar em sua própria pasta e incluir um README com objetivo, materiais, instruções e arquivos de apoio.
 
-## Desafio 1 · Python, API e IA
+## Desafio 1 · Python, APIs e IA
 
-O material principal está organizado em três partes:
+No primeiro desafio, cada participante escolhe um dos oito temas abaixo e trabalha com ele ao longo do bootcamp. O mesmo tema será utilizado nas atividades de Estatística, Excel, SQL/Data Vis e Big Data.
 
-- `Guia_Desafio1_Google_Colab.md` — preparação e conteúdo da sessão
-- `Guia_Desafio1_Google_Colab_Parte2.md` — prática na sessão
-- `Guia_Desafio1_Google_Colab_Parte3.md` — continuidade do trabalho autônomo
+### Guias
 
-O objetivo da atividade é:
+| Material | Conteúdo |
+|---|---|
+| [Guia principal](Guia_Desafio1_Google_Colab.md) | Preparação e conteúdo da sessão |
+| [Parte 2](Guia_Desafio1_Google_Colab_Parte2.md) | Prática: conexão com o Google Sheets e escrita de dados de teste |
+| [Parte 3](Guia_Desafio1_Google_Colab_Parte3.md) | Continuação do trabalho autônomo e conclusão da base |
 
-1. criar a credencial de acesso à Google Sheets API;
-2. autenticar o Python no Google Colab;
-3. escolher um tema entre oito opções;
-4. criar a planilha e escrever dados de teste;
-5. modelar a base de dados em tabelas de dimensão e fato;
-6. gerar ou carregar os dados completos;
-7. validar a carga na planilha;
-8. registrar o uso de IA e entregar a solução com ética e consistência.
+### Temas e planos de dados
 
-## Temas disponíveis
+Cada tema possui um plano de modelagem com esquema, tabelas, volumetria e regras de geração. Os nomes de coluna definidos nos planos devem ser usados sem alterações.
 
-Os desafios usam um conjunto padronizado de temas, sempre com o mesmo modelo de dados para os próximos módulos do bootcamp:
+| # | Tema | Plano | Tabelas (dimensão · fato) | Linhas aproximadas |
+|---:|---|---|---|---:|
+| 1 | Estacionamento | [Plano](bases_dados/01-estacionamento/01-estacionamento.md) | `vagas` · `movimentacoes` | 52.200 |
+| 2 | Posto de saúde (triagem) | [Plano](bases_dados/02-posto-de-saude/02-posto-de-saude.md) | `pacientes` · `atendimentos` | 52.500 |
+| 3 | Streaming de filmes | [Plano](bases_dados/03-streaming-de-filmes/03-streaming-de-filmes.md) | `filmes` · `visualizacoes` | 65.300 |
+| 4 | Atendimento ao cliente | [Plano](bases_dados/04-atendimento-ao-cliente/04-atendimento-ao-cliente.md) | `clientes` · `chamados` | 52.400 |
+| 5 | Passagens aéreas | [Plano](bases_dados/05-passagens-aereas/05-passagens-aereas.md) | `voos` · `reservas` | 65.600 |
+| 6 | Serviço meteorológico | [Plano](bases_dados/06-servico-meteorologico/06-servico-meteorologico.md) | `estacoes` · `leituras` | 72.050 |
+| 7 | Telemetria esportiva | [Plano](bases_dados/07-telemetria-esportiva/07-telemetria-esportiva.md) | `pilotos` · `voltas` | 65.800 |
+| 8 | Festival de música | [Plano](bases_dados/08-festival-de-musica/08-festival-de-musica.md) | `atracoes` · `ingressos_vendidos` | 65.100 |
 
-- Estacionamento
-- Posto de saúde
-- Streaming de filmes
-- Atendimento ao cliente
-- Passagens aéreas
-- Serviço meteorológico
-- Telemetria esportiva
-- Festival de música
+Os planos foram conferidos com o script `gerar_bases.py`. Os dados são fictícios e reproduzíveis, gerados com semente fixa e exportados em CSV. Consulte cada plano para ver o esquema e os detalhes da geração.
 
-Cada tema possui:
+### Organização dos dados
 
-- esquema de colunas fixo;
-- tabela de dimensão/cadastro;
-- tabela de fato/evento;
-- volumetria mínima proposta;
-- regras de geração e validação.
+Os temas começam com duas tabelas relacionadas:
 
-## Estrutura do repositório
+- **Dimensão/cadastro:** descreve a entidade central e possui uma chave primária única.
+- **Fato/evento:** registra ocorrências e referencia a dimensão por uma chave estrangeira.
 
-A estrutura base do projeto é organizada para facilitar a navegação e a execução dos desafios:
+Essa estrutura serve de base para atividades posteriores, que podem acrescentar dimensões e explorar relacionamentos e modelos em estrela.
 
-- `README.md` — documentação geral do repositório
-- `Guia_Desafio1_Google_Colab.md` — guia inicial do desafio
-- `Guia_Desafio1_Google_Colab_Parte2.md` — prática em planilha e Colab
-- `Guia_Desafio1_Google_Colab_Parte3.md` — etapa final do guia
-- `bases_dados/` — planos e dados dos temas
-- `imagens/` — ilustrações e instruções visuais
-- `icones/` — ícones dos temas
+### Fluxo de trabalho
 
-## Como funciona a modelagem
+1. Escolha um tema e leia seu plano de dados.
+2. Siga os guias para configurar a credencial e conectar o Python ao Google Sheets pelo Colab.
+3. Escreva o cabeçalho e valide os dados de teste.
+4. Gere ou carregue as tabelas completas e confira os resultados.
 
-Todos os temas seguem a mesma lógica de organização:
+### Boas práticas
 
-- Dimensão/cadastro: representa a entidade central e possui chave primária única.
-- Fato/evento: registra ocorrências ao longo do tempo e geralmente concentra a maior parte do volume.
+- Use somente dados fictícios; nunca inclua dados pessoais reais. Tenha cuidado especial com temas sensíveis, como saúde.
+- Mantenha os nomes e tipos de coluna conforme o plano do tema.
+- Proteja as credenciais: não publique arquivos JSON, chaves ou segredos.
+- Use IA como apoio, verifique o conteúdo gerado e não apresente estatísticas inventadas como fatos reais.
 
-Essa separação prepara o terreno para desafios mais avançados, como modelagem em estrela e joins entre tabelas.
+## Como incluir um novo desafio
 
-## Regras importantes
-
-- Nenhum dado pessoal real deve ser utilizado.
-- Dados devem ser fictícios, mesmo em contextos sensíveis, como saúde.
-- Nomes de colunas devem seguir exatamente o esquema definido.
-- O uso de IA deve apoiar a geração, mas nunca substituir a verificação humana.
-- Estatísticas e números não podem ser apresentados como fatos reais sem fonte confiável.
-
-## Fluxo sugerido
-
-1. Escolha um tema.
-2. Leia o plano de esquema do tema.
-3. Configure a credencial de acesso ao Google Sheets.
-4. Crie a planilha e compartilhe com a conta de serviço.
-5. Use o Colab para autenticar e testar a conexão.
-6. Escreva o cabeçalho e gere dados de teste.
-7. Valide a carga na planilha.
-8. Gere ou carregue a base completa.
-9. Registre o uso de IA e entregue o material final.
-
-## Observação
-
-Este repositório foi pensado como base didática para praticar modelagem de dados, API e automatização com Python, mantendo uma abordagem segura, organizada e coerente com as exigências do desafio.
-
----
-
-Se quiser, posso também criar a estrutura completa de pastas e os arquivos iniciais dos temas (`bases_dados/...`) no repositório, conforme o padrão dos guias anexados.
+Ao adicionar uma atividade, inclua uma linha no catálogo com o número, o tema, o link para a pasta ou guia principal e uma descrição curta. Organize os materiais específicos na pasta do desafio e documente no README correspondente seus objetivos, etapas, dependências e cuidados relevantes. Assim, a página principal continua sendo um índice geral, sem misturar instruções particulares de atividades diferentes.
