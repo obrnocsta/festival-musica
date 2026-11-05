@@ -4,12 +4,6 @@ Repositório dos desafios do bootcamp de **Análise de Dados da Generation Brasi
 
 No Desafio 1, cada participante escolhe um dos oito temas abaixo e utiliza a mesma base nos desafios de Estatística, Excel, SQL/Data Viz e Big Data.
 
-## Guias
-
-| Desafio | Material |
-|---|---|
-| 1 · Python, API e IA | [Guia do Desafio 01](Guia_Desafio1_Google_Colab.md) |
-
 ## Temas disponíveis
 
 | # | Tema | Tabelas | Registros |
@@ -23,8 +17,6 @@ No Desafio 1, cada participante escolhe um dos oito temas abaixo e utiliza a mes
 | 7 | Telemetria esportiva | `pilotos` · `voltas` | 65.800 |
 | 8 | Festival de música | `atracoes` · `ingressos_vendidos` | 65.100 |
 
-Os planos de modelagem estão disponíveis na pasta [`bases_dados`](bases_dados/).
-
 ## Estrutura das bases
 
 Cada tema possui duas tabelas:
@@ -33,19 +25,6 @@ Cada tema possui duas tabelas:
 - **Fato ou evento:** registra ocorrências ao longo do tempo e referencia a tabela de dimensão por chave estrangeira.
 
 Os nomes das colunas são fixos e devem ser mantidos em todos os desafios.
-
-## Geração dos dados
-
-As bases são geradas pelo script `gerar_bases.py`, utilizando:
-
-- Python;
-- `pandas`;
-- `numpy`;
-- `Faker` com localidade `pt_BR`.
-
-A geração usa a semente `42`, garantindo resultados reproduzíveis, e produz arquivos CSV em UTF-8, organizados por tema.
-
-Cada tema possui pelo menos 20.000 linhas somadas, conforme a exigência do projeto.
 
 ## Ética e privacidade
 
