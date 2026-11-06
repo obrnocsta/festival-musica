@@ -1,77 +1,59 @@
-# Desafio 01 — Festival de Música
+## Guias e Conteúdos dos desafios
 
-Projeto do bootcamp de **Análise de Dados da Generation Brasil**. O objetivo é criar uma base fictícia de um festival de música usando Python, Google Colab e Google Sheets.
+Os materiais de cada atividade serão reunidos nesta tabela para facilitar a navegação pelo repositório.
 
-## Estrutura da base
+| Desafio | Material | Conteúdo |
+|---------|----------|----------|
+| 1 · Python, API e IA | [Guia do Desafio 01](https://github.com/rafaelq80/desafios_tecnicos_ad/blob/01_Bases/Guia_Desafio1_Google_Colab.md) | Preparação e conteúdo da sessão |
 
-| Tabela | Tipo | Registros |
-|---|---|---:|
-| `atracoes` | Dimensão | 10.100 |
-| `ingressos_vendidos` | Fato | 55.000 |
-| **Total** |  | **65.100** |
+---
 
-A base atende ao requisito mínimo de 20.000 registros.
+## Sobre este material
 
-### Tabela `atracoes`
+No Desafio 1 (Python), cada participante escolhe um dos 8 temas abaixo e segue com ele durante o bootcamp inteiro. O mesmo tema alimentará os Desafios 2 (Estatística), 3 (Excel), 4 (SQL/Data Vis) e 5 (Big Data).
 
-| Coluna | Descrição |
-|---|---|
-| `atracao_id` | Identificador da atração |
-| `nome_artista_ficticio` | Nome fictício do artista ou banda |
-| `genero_musical` | Gênero musical |
-| `edicao_festival` | Edição do festival |
-| `dia_apresentacao` | Data da apresentação |
-| `palco` | Palco da apresentação |
-| `horario_inicio` | Horário de início |
+Cada arquivo desta pasta é o **plano de modelagem** da base mockada daquele tema: nomes de coluna definidos, tipos de tabela, cardinalidade, volumetria e regras de geração. Os nomes de coluna são fixos de propósito: Python, Excel e SQL precisam bater exatamente com esse esquema, sem erro de digitação entre desafios.
 
-## Funcionamento
+Os planos foram **validados contra o script `gerar_bases.py`**, que gera os arquivos CSV de cada tema. Onde o plano original e o script divergiam, uma das duas pontas foi ajustada: o script foi corrigido quando gerava dados incoerentes (datas impossíveis, corridas sem sequência, geografia incompatível, entre outros) e o plano foi ajustado quando a diferença era só de volumetria ou de descrição. As divergências relevantes estão sinalizadas no arquivo de cada tema.
 
-O notebook `Desafio1_API_Python.ipynb`:
+---
 
-1. conecta o Python ao Google Sheets;
-2. autentica usando uma conta de serviço;
-3. cria os cabeçalhos das tabelas;
-4. gera dados fictícios com `Faker`;
-5. carrega os arquivos `atracoes.csv` e `ingressos_vendidos.csv`;
-6. envia os dados em lotes de 5.000 registros;
-7. valida cabeçalhos, contagens e volume total.
+## Os temas
 
-## Tecnologias
+| # | Tema | Plano | Tabelas (dimensão · fato) | Linhas |
+|:-:|:--|:--|:--|--:|
+| 1 | Estacionamento | [01-estacionamento.md](https://github.com/rafaelq80/desafios_tecnicos_ad/blob/01_Bases/bases_dados/01-estacionamento/01-estacionamento.md) | `vagas` · `movimentacoes` | 52.200 |
+| 2 | Posto de saúde (triagem) | [02-posto-de-saude.md]([bases_dados/02-posto-de-saude/02-posto-de-saude.md](https://github.com/rafaelq80/desafios_tecnicos_ad/blob/01_Bases/bases_dados/02-posto-de-saude/02-posto-de-saude.md)) | `pacientes` · `atendimentos` | 52.500 |
+| 3 | Streaming de filmes | [03-streaming-de-filmes.md]([bases_dados/03-streaming-de-filmes/03-streaming-de-filmes.md](https://github.com/rafaelq80/desafios_tecnicos_ad/blob/01_Bases/bases_dados/03-streaming-de-filmes/03-streaming-de-filmes.md)) | `filmes` · `visualizacoes` | 65.300 |
+| 4 | Atendimento ao cliente | [04-atendimento-ao-cliente.md](https://github.com/rafaelq80/desafios_tecnicos_ad/blob/01_Bases/bases_dados/04-atendimento-ao-cliente/04-atendimento-ao-cliente.md) | `clientes` · `chamados` | 52.400 |
+| 5 | Passagens aéreas | [05-passagens-aereas.md](https://github.com/rafaelq80/desafios_tecnicos_ad/blob/01_Bases/bases_dados/05-passagens-aereas/05-passagens-aereas.md) | `voos` · `reservas` | 65.600 |
+| 6 | Serviço meteorológico | [06-servico-meteorologico.md](https://github.com/rafaelq80/desafios_tecnicos_ad/blob/01_Bases/bases_dados/06-servico-meteorologico/06-servico-meteorologico.md) | `estacoes` · `leituras` | 72.050 |
+| 7 | Telemetria esportiva | [07-telemetria-esportiva.md](https://github.com/rafaelq80/desafios_tecnicos_ad/blob/01_Bases/bases_dados/07-telemetria-esportiva/07-telemetria-esportiva.md) | `pilotos` · `voltas` | 65.800 |
+| 8 | Festival de música | [08-festival-de-musica.md](https://github.com/rafaelq80/desafios_tecnicos_ad/blob/01_Bases/bases_dados/08-festival-de-musica/08-festival-de-musica.md) | `atracoes` · `ingressos_vendidos` | 65.100 |
 
-- Python
-- Google Colab
-- Google Sheets
-- `gspread`
-- `Faker`
-- `pandas`
+---
 
-## Como executar
+## Convenção comum a todos os temas
 
-1. Abra o notebook no [Google Colab](https://colab.research.google.com/).
-2. Configure uma conta de serviço no Google Cloud.
-3. Ative as APIs do Google Sheets e Google Drive.
-4. Compartilhe a planilha com a conta de serviço como **Editor**.
-5. Cadastre as credenciais nos **Secrets** do Colab:
-   - `GCP_SA_JSON`
-   - `ID_SEGREDO`
-6. Execute as células na ordem.
-7. Quando solicitado, envie os arquivos CSV.
+**Estrutura das tabelas**
 
-> Nunca publique o JSON da conta de serviço ou o ID da planilha em repositórios públicos.
+- **Mínimo de 2 tabelas de tipos diferentes**: uma tabela de **dimensão/cadastro** (a entidade central, com chave primária única) e uma tabela de **fato/evento** (os registros ao longo do tempo, em maior volume, que referencia a dimensão por chave estrangeira).
+- Essa separação é proposital: prepara o terreno para o Desafio 4, em que o aluno **adiciona novas tabelas de dimensão** para transformar o modelo de 2 tabelas em um esquema estrela com mais joins.
+- Colunas de tipo e categoria ficam como **texto puro**, de propósito. A normalização delas em catálogos é tarefa do Desafio 4.
 
-## Aprendizados
+**Volumetria**
 
-- Autenticação com conta de serviço;
-- Uso de Secrets para proteger credenciais;
-- Geração de dados fictícios com `Faker`;
-- Integração entre Python e Google Sheets;
-- Envio de grandes volumes em lotes;
-- Validação de dados com `assert`.
+- Regra do projeto: **mínimo de 20.000 linhas somadas** por tema.
+- O script gera **pelo menos 10.000 linhas por tabela** (dimensão e fato), então todos os temas ficam bem acima do mínimo, com entre 52 mil e 72 mil linhas.
+- A tabela de fato carrega a maior parte do volume. A dimensão também passa de 10 mil linhas, o que faz com que cada entidade apareça em média de 4 a 6 vezes na tabela de fato.
 
-## Autor
+**Geração**
 
-**Bruno Costa da Silva**
+- Script: `gerar_bases.py`, com Python, `pandas`, `numpy` e `Faker` (localidade `pt_BR`).
+- Semente fixa (`SEED = 42`), portanto a geração é reproduzível. Saída em CSV (UTF-8), uma pasta por tema.
+- O uso de IA para gerar ou ajustar dados deve seguir a regra de "IA de forma responsável" do Desafio 4, sem inventar estatística que pareça dado real de mercado.
 
-- [LinkedIn](https://www.linkedin.com/in/obrnocsta)
+**Ética e privacidade**
 
-Projeto desenvolvido durante o bootcamp de Análise de Dados da **Generation Brasil**.
+- **Nenhum dado pessoal real.** Todo nome de pessoa ou identificador é gerado (Faker ou sorteio), nunca de pessoa real.
+- No tema 2 (saúde), a regra é reforçada por tratar de dado sensível por natureza, mesmo fictício.
