@@ -1,4 +1,4 @@
-## Festival de Música (Prisma Entretenomento)
+# Festival de Música (Prisma Entretenomento)
 
 **Produtora de eventos**
 Plano de modelagem da base de dados mockada
