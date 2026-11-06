@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="imagens/banner.png" alt="Banner do projeto">
-</p>
-
-<h1 align="center">Desafio 01 — Python, APIs e IA</h1>
+<h1 align="center">Desafio 01 - Python, APIs e IA</h1>
 
 <p align="center">
   Projeto de geração de bases de dados fictícias com Python, Google Colab e Google Sheets API.
@@ -14,7 +10,7 @@
 
 O Desafio 01 faz parte de uma trilha de formação em análise de dados. Cada participante escolhe um dos oito temas disponíveis e constrói uma base de dados fictícia que será reutilizada nos desafios seguintes: Estatística, Excel, SQL/Visualização de Dados e Big Data.
 
-O projeto apresenta o uso de APIs, autenticação por *service account*, geração de dados com Python e integração com o Google Sheets. O esquema de cada tema — nomes e ordem das colunas, tabelas e relacionamentos — deve ser seguido sem alterações, garantindo compatibilidade entre as etapas do bootcamp.
+O projeto apresenta o uso de APIs, autenticação por *service account*, geração de dados com Python e integração com o Google Sheets. O esquema de cada tema - nomes e ordem das colunas, tabelas e relacionamentos - deve ser seguido sem alterações, garantindo compatibilidade entre as etapas do bootcamp.
 
 ## Objetivos de aprendizagem
 
@@ -73,7 +69,7 @@ Os planos de modelagem e os arquivos de cada tema estão no repositório de refe
 
 A atividade está organizada em três momentos. A sessão tem duração total prevista de 60 minutos; a construção da base completa é realizada de forma autônoma, em aproximadamente 150 a 180 minutos.
 
-### 1. Preparação — antes da sessão
+### 1. Preparação - antes da sessão
 
 1. Acesse o [Google Cloud Console](https://console.cloud.google.com/) e crie um projeto.
 2. Em **APIs e serviços → Biblioteca**, ative:
@@ -85,9 +81,9 @@ A atividade está organizada em três momentos. A sessão tem duração total pr
 
 > **Segurança:** o arquivo JSON contém uma chave privada e deve ser tratado como uma senha. Não o publique, não o envie por chat e não o adicione ao repositório. Se houver suspeita de exposição, revogue a chave no Google Cloud Console.
 
-### 2. Prática — durante a sessão
+### 2. Prática - durante a sessão
 
-**Passo 1 — Criar e compartilhar a planilha**
+**Passo 1 - Criar e compartilhar a planilha**
 
 1. Acesse [sheets.new](https://sheets.new) e crie uma planilha com o nome correspondente ao tema:
    - `Desafio_01_Estacionamento`
@@ -101,19 +97,19 @@ A atividade está organizada em três momentos. A sessão tem duração total pr
 2. Compartilhe a planilha com o `client_email` da service account, concedendo a função **Editor**.
 3. Copie o ID da planilha: é o trecho da URL entre `/d/` e `/edit`.
 
-**Passo 2 — Criar o notebook e configurar o acesso**
+**Passo 2 - Criar o notebook e configurar o acesso**
 
 Acesse [Google Colab](https://colab.research.google.com), crie um notebook chamado `Desafio1_API_Python` e salve o conteúdo integral do JSON nos Secrets do Colab com o nome `GCP_SA_JSON`.
 
 Execute as células a seguir, em ordem.
 
-**Célula 1 — Instalação**
+**Célula 1 - Instalação**
 
 ```python
 !pip install -q gspread faker
 ```
 
-**Célula 2 — Importação e autenticação**
+**Célula 2 - Importação e autenticação**
 
 ```python
 import json
@@ -130,7 +126,7 @@ print("Conectado como:", info["client_email"])
 
 Na primeira execução, autorize o notebook a acessar o Secret `GCP_SA_JSON`. Execute novamente a célula e confirme a exibição do e-mail da service account.
 
-**Célula 3 — Abrir a planilha**
+**Célula 3 - Abrir a planilha**
 
 Substitua o ID e o nome da aba pelos valores do seu tema.
 
@@ -156,7 +152,7 @@ ws.update_title(NOME_TABELA)
 print(sh.title, "|", ws.title, "|", sh.url)
 ```
 
-**Célula 4 — Definir o esquema da dimensão**
+**Célula 4 - Definir o esquema da dimensão**
 
 Substitua os exemplos pelos nomes exatos e na ordem indicada na ficha do tema.
 
@@ -167,7 +163,7 @@ ws.update(range_name="A1", values=[COLUNAS])
 print("Cabeçalho confere:", ws.row_values(1) == COLUNAS)
 ```
 
-**Célula 5 — Gerar e enviar 10 linhas de teste**
+**Célula 5 - Gerar e enviar 10 linhas de teste**
 
 Adapte os campos e os tipos de dados à tabela escolhida.
 
@@ -190,7 +186,7 @@ ws.append_rows(valores, value_input_option="RAW")
 print(len(valores), "linhas enviadas")
 ```
 
-**Célula 6 — Ler e conferir os dados**
+**Célula 6 - Ler e conferir os dados**
 
 ```python
 valores_lidos = ws.get_all_values()
@@ -202,11 +198,11 @@ print(valores_lidos[:3])
 
 Ao final da sessão, abra a planilha no navegador e confirme que o cabeçalho está na primeira linha e que existem 10 registros abaixo dele. A meta da sessão é ter a conexão funcionando e os dados de teste gravados; a base completa será feita depois.
 
-### 3. Construção da base completa — depois da sessão
+### 3. Construção da base completa - depois da sessão
 
 Até a data combinada com o instrutor, gere ou carregue todas as tabelas do tema, atingindo pelo menos 20.000 linhas somadas.
 
-**Célula 7 — Funções de conversão e envio**
+**Célula 7 - Funções de conversão e envio**
 
 ```python
 import time
@@ -257,7 +253,7 @@ def enviar(sh, df, nome_aba, lote=5000, pausa=2):
             f"Aba {nome_aba}: enviei {len(df)}, li {linhas_lidas}."
         )
 
-    print(f"OK — {nome_aba}: {len(df)} linhas")
+    print(f"OK - {nome_aba}: {len(df)} linhas")
     return ws
 
 
@@ -276,7 +272,7 @@ def remover_aba_padrao(sh):
 
 Escolha **uma** das opções abaixo para montar o dicionário `BASES`. Cada chave deve ser o nome exato da tabela e cada valor deve ser um DataFrame.
 
-**Opção A — Carregar arquivos CSV fornecidos pelo instrutor**
+**Opção A - Carregar arquivos CSV fornecidos pelo instrutor**
 
 ```python
 from google.colab import files
@@ -305,7 +301,7 @@ Use os nomes de arquivo correspondentes ao tema:
 | Telemetria esportiva | `pilotos.csv` | `voltas.csv` |
 | Festival de música | `atracoes.csv` | `ingressos_vendidos.csv` |
 
-**Opção B — Gerar as tabelas com Faker e NumPy**
+**Opção B - Gerar as tabelas com Faker e NumPy**
 
 O exemplo abaixo demonstra a estrutura para duas tabelas relacionadas. Adapte as colunas, os tipos e as regras de geração à ficha do tema.
 
@@ -353,7 +349,7 @@ print({nome: len(df) for nome, df in BASES.items()}, "| total:", total)
 
 Para campos fictícios, o Faker oferece, por exemplo, `fake.name()` e `fake.city()`. Revise os resultados para garantir que não correspondam a pessoas conhecidas. No tema Posto de Saúde, prefira identificadores fictícios (por exemplo, `PAC-0001`) em vez de nomes.
 
-**Célula 9 — Enviar todas as tabelas**
+**Célula 9 - Enviar todas as tabelas**
 
 ```python
 for nome, df in BASES.items():
@@ -364,7 +360,7 @@ remover_aba_padrao(sh)
 
 O envio ocorre em lotes de 5.000 linhas, com pausa de 2 segundos entre os lotes. A função limpa o conteúdo da aba antes de gravar os dados, evitando duplicação quando a célula é executada novamente.
 
-**Célula 10 — Validar a base**
+**Célula 10 - Validar a base**
 
 ```python
 total = sum(len(df) for df in BASES.values())
